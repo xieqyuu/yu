@@ -45,17 +45,29 @@
     }
   </style>
   <script>
-    function checkPassword() {
-      var password = document.getElementById("password").value;
-      if (password === "1234") {
+    async function checkPassword() {
+      const inputPassword = document.getElementById("password").value;
+      const hashedPassword = await sha256(inputPassword);
+      const correctHash = "8e71b24534e9f3fb3a71263359fed2b7ffb008265e0d34383e319f1b6f5c08f2";  // 替换为你生成的哈希值
+
+      if (hashedPassword === correctHash) {
         document.getElementById("content").style.display = "block";
         document.getElementById("form").style.display = "none";
       } else {
         alert("密码是你的出生年份，四位数字喔~");
       }
     }
+
+    async function sha256(message) {
+      const encoder = new TextEncoder();
+      const data = encoder.encode(message);
+      const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+      const hashArray = Array.from(new Uint8Array(hashBuffer));
+      return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+    }
   </script>
 </head>
+
 <body>
   <h2>Hi, this is Qianyu!</h2>
   <p>谢谢你愿意点开这个网页！在你的黑名单里躺了有一段时间了，我攒了一些碎碎念...</p>
