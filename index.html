@@ -1,36 +1,75 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>密码保护页面</title>
+  <title>hello world</title>
   <style>
-    body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }
-    #content { display: none; }
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 600px;
+      margin: 50px auto;  /* 居中页面，限制宽度 */
+      line-height: 1.6;  /* 增加行高，提升可读性 */
+      background-color: #f5f5f5; /* 设置背景色 */
+      color: #333; /* 设置字体颜色 */
+    }
+    h2 {
+      text-align: center;
+      color: #444;
+    }
+    p {
+      text-align: left;  /* 左侧对齐文本 */
+      margin-bottom: 20px;  /* 段落间距 */
+    }
+    #form, #content {
+      background-color: #fff; /* 设置内容区域背景 */
+      padding: 20px;
+      border-radius: 10px;  /* 圆角边框 */
+      box-shadow: 0 0 10px rgba(0,0,0,0.1); /* 添加阴影 */
+    }
+    input[type="password"] {
+      width: 80%;  /* 密码框宽度 */
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      background-color: #007BFF;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0056b3; /* 鼠标悬停颜色 */
+    }
   </style>
   <script>
     function checkPassword() {
       var password = document.getElementById("password").value;
-      if (password === "1234") {
+      if (password === "你的密码") {
         document.getElementById("content").style.display = "block";
         document.getElementById("form").style.display = "none";
       } else {
-        alert("密码错误！");
+        alert("密码错误，请重试！");
       }
     }
   </script>
 </head>
 <body>
   <h2>信的开头段落</h2>
-  <p>这里是公开的开头部分...</p>
+  <p>这里是公开的开头部分，你可以在这里描述一些概述或引导信息。</p>
 
   <div id="form">
     <p>请输入密码查看完整内容：</p>
-    <input type="password" id="password">
+    <input type="password" id="password" placeholder="输入密码">
     <button onclick="checkPassword()">提交</button>
   </div>
 
-  <div id="content">
+  <div id="content" style="display:none;">
     <h3>信的正文部分</h3>
-    <p>这里是只有输入正确密码后才能看到的内容。</p>
+    <p>这里是只有输入正确密码后才能看到的详细内容。</p>
+    <p>你可以继续添加更多的段落和信息。</p>
   </div>
 </body>
 </html>
