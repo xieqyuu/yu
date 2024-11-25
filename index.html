@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>密码保护页面</title>
+  <style>
+    body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }
+    #content { display: none; }
+  </style>
+  <script>
+    function checkPassword() {
+      var password = document.getElementById("password").value;
+      if (password === "1234") {
+        document.getElementById("content").style.display = "block";
+        document.getElementById("form").style.display = "none";
+      } else {
+        alert("密码错误！");
+      }
+    }
+  </script>
+</head>
+<body>
+  <h2>信的开头段落</h2>
+  <p>这里是公开的开头部分...</p>
+
+  <div id="form">
+    <p>请输入密码查看完整内容：</p>
+    <input type="password" id="password">
+    <button onclick="checkPassword()">提交</button>
+  </div>
+
+  <div id="content">
+    <h3>信的正文部分</h3>
+    <p>这里是只有输入正确密码后才能看到的内容。</p>
+  </div>
+</body>
+</html>
